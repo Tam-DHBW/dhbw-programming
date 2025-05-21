@@ -6,3 +6,4 @@ rootProject.name = "dhbw-programming"
 include("app")
 include("logisim")
 include("pollutionmap")
+include("grade-manager")

@@ -1,0 +1,12 @@
+package dhbw.mos.brainfuck.commands;
+
+import dhbw.mos.brainfuck.Command;
+import dhbw.mos.brainfuck.State;
+
+public record MovePointer(boolean right) implements Command {
+    @Override
+    public void performAction(State state) {
+        int changeBy = this.right ? 1 : -1;
+        state.setPointer((state.getPointer() + changeBy) % state.getMemory().length);
+    }
+}

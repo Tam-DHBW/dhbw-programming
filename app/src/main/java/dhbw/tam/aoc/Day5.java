@@ -11,24 +11,24 @@ record Order(int first, int after) {
 
 public class Day5 {
     public static void main(String[] args) throws IOException {
-        Path path = Path.of(args[0]);
-        String rawInput = Files.readString(path);
+        final Path path = Path.of(args[0]);
+        final String rawInput = Files.readString(path);
 
-        String[] splitRawInput = rawInput.split("\n\n");
-        String rawOrders = splitRawInput[0];
-        String rawUpdates = splitRawInput[1];
+        final String[] splitRawInput = rawInput.split("\n\n");
+        final String rawOrders = splitRawInput[0];
+        final String rawUpdates = splitRawInput[1];
 
-        List<Order> orders = rawOrders
+        final List<Order> orders = rawOrders
                 .lines()
                 .map(line -> {
-                    String[] splitLine = line.split("\\|");
-                    int first = Integer.parseInt(splitLine[0]);
-                    int after = Integer.parseInt(splitLine[1]);
+                    final String[] splitLine = line.split("\\|");
+                    final int first = Integer.parseInt(splitLine[0]);
+                    final int after = Integer.parseInt(splitLine[1]);
                     return new Order(first, after);
                 })
                 .toList();
 
-        List<List<Integer>> updates = rawUpdates
+        final List<List<Integer>> updates = rawUpdates
                 .lines()
                 .map(line -> List.of(line.split(",")))
                 .map(pages -> pages
@@ -38,11 +38,11 @@ public class Day5 {
                 )
                 .toList();
 
-        List<List<Integer>> correctUpdates = updates
+        final List<List<Integer>> correctUpdates = updates
                 .stream()
                 .filter(update -> IntStream.range(0, update.size()).allMatch(index -> {
-                    int page = update.get(index);
-                    List<Integer> before = update.subList(0, index);
+                    final int page = update.get(index);
+                    final List<Integer> before = update.subList(0, index);
 
                     return orders
                             .stream()
@@ -51,7 +51,7 @@ public class Day5 {
                 }))
                 .toList();
 
-        int result = correctUpdates
+        final int result = correctUpdates
                 .stream()
                 .map(update -> update.get(update.size() / 2))
                 .mapToInt(Integer::intValue)

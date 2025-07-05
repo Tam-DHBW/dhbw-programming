@@ -5,3 +5,7 @@ build
 **.project
 **.classpath
 **.settings
+
+.idea
+.vscode
+**/bin/

@@ -10,7 +10,10 @@ public class Main {
         LogicGate circuit = SimpleGate.and(
                 SimpleGate.or(
                         new InputGate('A', true),
-                        new InputGate('B', false)
+                        SimpleGate.and(
+                                new InputGate('B', false),
+                                new InputGate('D', true)
+                        )
                 ).display(),
                 new InputGate('C', true)
         ).display();

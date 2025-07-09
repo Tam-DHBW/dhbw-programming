@@ -30,6 +30,7 @@ public class RadixSort {
         return sorted;
     }
 
+    // 2 (length + radix)
     private static int[] radixSort(int[] arr) {
         int radix = 10;
         int length = arr.length;
@@ -77,11 +78,13 @@ public class RadixSort {
     public static void main(String[] args) {
         int[] arr = new int[] { 9, 3, 1, 3, 1, 3, 5 };
         int[] sorted = bucketSort(10, arr);
+        System.out.println("Bucket sort:");
         System.out.println(Arrays.toString(sorted));
 
         Random rng = new Random();
-        int[] radixStart = rng.ints().map(Math::abs).limit(10).toArray();
+        int[] radixStart = rng.ints(0, 99999).map(Math::abs).limit(10).toArray();
 //        int[] radixStart = new int[] { 105, 14, 38, 234, 7 };
+        System.out.println("Radix sort:");
         System.out.println(Arrays.toString(radixStart));
         System.out.println(Arrays.toString(radixSort(radixStart)));
     }

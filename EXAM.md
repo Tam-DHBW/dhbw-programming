@@ -29,17 +29,61 @@ Good luck with your evaluation!
 
 ## Link
 
-
-*your text*
+https://github.com/NewStudy2024/dhbw-discord-bot
 
 ## TECH STACK
 
-*your text*
+- Build system
+    - Gradle
+- Discord API
+    - JDA (Java Discord API)
+    - JDA-Chewtils (Command creation)
+- Github GraphQL API
+    - Apollo GraphQL client
+- JSON serialization/deserialization
+    - Kotlin serialization
+- Rapla calendar parsing
+    - ICal4J didn’t work
+    - Built my own
+- Logging
+    - slf4j
+    - logback
+- Deployment
+    - Docker
+
 
 ## What did you achieve? 
 
-*your text*
+An automated discord user (bot) to help the students of our course.
+Its features consist of:
 
+- Display the Rapla calendar on Discord
+    - Shows the schedule for the current day
+    - Automatically updates itself
+    - Automatic timezone localization for the viewer of the calendar
+    - Notify students 5 minutes before a lecture starts
+    - Button to indicate one is late for the lecture
+    - Works by fetching `ical` calendar data from https://dhbw.app
+    - Custom Stream/lambda based `ical` format parser to retrieve calendar data
+- Github Blog discussion notifications
+    - Send a notification with discussion title and a link to the discussion that was created on a repository of a student
+    - Was relevant last semester when we had to do the coding blog
+    - Remembers which discussions were already sent into the notification channel
+    - Commands to track/untrack/list repositories
+    - Untrack command has autocompletion of tracked repositories
+    - Uses the github GraphQL API for the discussion data
+    - I used the Apollo GraphQL client library and wrote a GraphQL query
+- Deadline tracker
+    - Students can add and delete deadlines which are then displayed in a list with automatic rainbow coloring.
+    - Deadlines include: Title, description and due date
+    - Makes heavy use of discord's interaction api to create buttons lists and modals:
+        - Button to add deadline
+        - Modal to fill out deadline data
+        - Select list with autocompletion for deleting deadlines
+- Replaceable backend (On which platforms the bot can run)
+    - Discord backend implemented
+        - Using JDA discord api wrapper
+    - Possibly matrix support in the future without having to rewrite the whole project
 
 
 
